@@ -14,14 +14,15 @@ def get_insurance():
     if request.method == "POST":
         data = request.form
         print("user input data is >>>",data)
-        age = eval(data["age"])
+        
         gender = data["gender"]
         bmi = eval(data["bmi"])
         children = int(data["children"])
         smoker  = data["smoker"]
         region = data["region"]
+        age = eval(data["age"])
         med_obj = MedicalInsurance(age,gender,bmi,children,smoker,region)
-        charges = med_obj.get_predict_charges()
+        
         return jsonify({"Result":f"Predicted medical insurance charges is {charges[0]}"})
     
 
